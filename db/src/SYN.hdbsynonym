@@ -28,5 +28,11 @@
       "object": "VBAP",
       "schema": "SAPABAP1"
     }
+  },
+  "SALESFORCE_HANA.db::VBPA": {
+    "target": {
+      "object": "VBPA",
+      "schema": "SAPABAP1"
+    }
   }
 }
