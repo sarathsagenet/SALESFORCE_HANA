@@ -1,0 +1,32 @@
+{
+  "SALESFORCE_HANA.db::BUT000": {
+    "target": {
+      "object": "BUT000",
+      "schema": "SAPABAP1"
+    }
+  },
+  "SALESFORCE_HANA.db::VBKD": {
+    "target": {
+      "object": "VBKD",
+      "schema": "SAPABAP1"
+    }
+  },
+  "SALESFORCE_HANA.db::VBEP": {
+    "target": {
+      "object": "VBEP",
+      "schema": "SAPABAP1"
+    }
+  },
+  "SALESFORCE_HANA.db::VBAK": {
+    "target": {
+      "object": "VBAK",
+      "schema": "SAPABAP1"
+    }
+  },
+  "SALESFORCE_HANA.db::VBAP": {
+    "target": {
+      "object": "VBAP",
+      "schema": "SAPABAP1"
+    }
+  }
+}
