@@ -34,5 +34,11 @@
       "object": "VBPA",
       "schema": "SAPABAP1"
     }
+  },
+  "SALESFORCE_HANA.db::PRCD_ELEMENTS": {
+    "target": {
+      "object": "PRCD_ELEMENTS",
+      "schema": "SAPABAP1"
+    }
   }
 }
