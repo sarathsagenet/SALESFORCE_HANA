@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SALESFORCE_HANA.db::SAPData_Salesforce_SO" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="SAP Data for Salesforce Comparison"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="SALESFORCE_HANA.db::VBEP">
+    <resourceUri>SALESFORCE_HANA.db::VBEP</resourceUri>
+  </DataSource>
+  <DataSource id="SALESFORCE_HANA.db::VBAP">
+    <resourceUri>SALESFORCE_HANA.db::VBAP</resourceUri>
+  </DataSource>
+  <DataSource id="SALESFORCE_HANA.db::VBAK">
+    <resourceUri>SALESFORCE_HANA.db::VBAK</resourceUri>
+  </DataSource>
+  <DataSource id="SALESFORCE_HANA.db::VBKD">
+    <resourceUri>SALESFORCE_HANA.db::VBKD</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="pVBEP">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="VBEP_VBELN"/>
+      <viewAttribute id="VBEP_POSNR"/>
+      <viewAttribute id="VBEP_EDATU"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="SALESFORCE_HANA.db::VBEP">
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_VBELN" source="VBELN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_POSNR" source="POSNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_EDATU" source="EDATU"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="pVBAP">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="VBELN"/>
+      <viewAttribute id="POSNR"/>
+      <viewAttribute id="VBAP_MATNR"/>
+      <viewAttribute id="VBAP_KWMENG"/>
+      <viewAttribute id="VBAP_LGORT"/>
+      <viewAttribute id="VBAP_KNUMV_ANA"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="SALESFORCE_HANA.db::VBAP">
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_MATNR" source="MATNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_KWMENG" source="KWMENG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_LGORT" source="LGORT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_KNUMV_ANA" source="KNUMV_ANA"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="jVBEP_VBAP" cardinality="CN_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="VBEP_VBELN"/>
+      <viewAttribute id="VBEP_POSNR"/>
+      <viewAttribute id="VBEP_EDATU"/>
+      <viewAttribute id="VBAP_MATNR"/>
+      <viewAttribute id="VBAP_KWMENG" aggregationType="sum"/>
+      <viewAttribute id="VBAP_LGORT"/>
+      <viewAttribute id="VBAP_KNUMV_ANA"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="pVBEP">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_VBELN" source="VBEP_VBELN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_POSNR" source="VBEP_POSNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_EDATU" source="VBEP_EDATU"/>
+    </input>
+    <input node="pVBAP">
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_MATNR" source="VBAP_MATNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_KWMENG" source="VBAP_KWMENG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_LGORT" source="VBAP_LGORT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_KNUMV_ANA" source="VBAP_KNUMV_ANA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_VBELN" source="VBELN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_POSNR" source="POSNR"/>
+    </input>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="VBEP_VBELN"/>
+    <joinAttribute name="VBEP_POSNR"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="pVBAK">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="VBELN"/>
+      <viewAttribute id="VBAK_AUGRU"/>
+      <viewAttribute id="VBAK_BNAME"/>
+    
+      <viewAttribute id="VBAK_KUNNR"/>
+    
+      <viewAttribute id="VBAK_AUDAT"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="SALESFORCE_HANA.db::VBAK">
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_AUGRU" source="AUGRU"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_BNAME" source="BNAME"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_KUNNR" source="KUNNR"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_AUDAT" source="AUDAT"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="j_with_VBAK" cardinality="CN_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="VBEP_VBELN"/>
+      <viewAttribute id="VBEP_POSNR"/>
+      <viewAttribute id="VBEP_EDATU"/>
+      <viewAttribute id="VBAP_MATNR"/>
+      <viewAttribute id="VBAP_KWMENG" aggregationType="sum"/>
+      <viewAttribute id="VBAP_LGORT"/>
+      <viewAttribute id="VBAK_AUGRU"/>
+      <viewAttribute id="VBAK_BNAME"/>
+      <viewAttribute id="VBAP_KNUMV_ANA"/>
+    
+      <viewAttribute id="VBAK_KUNNR"/>
+    
+      <viewAttribute id="VBAK_AUDAT"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="jVBEP_VBAP">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_VBELN" source="VBEP_VBELN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_POSNR" source="VBEP_POSNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_EDATU" source="VBEP_EDATU"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_MATNR" source="VBAP_MATNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_KWMENG" source="VBAP_KWMENG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_LGORT" source="VBAP_LGORT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_KNUMV_ANA" source="VBAP_KNUMV_ANA"/>
+    </input>
+    <input node="pVBAK">
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_AUGRU" source="VBAK_AUGRU"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_BNAME" source="VBAK_BNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_KUNNR" source="VBAK_KUNNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_AUDAT" source="VBAK_AUDAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_VBELN" source="VBELN"/>
+    </input>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="VBEP_VBELN"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="pVBKD">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="VBKD_VBELN"/>
+      <viewAttribute id="VBKD_POSNR"/>
+      <viewAttribute id="VBKD_BSTKD"/>
+      <viewAttribute id="VBKD_IHREZ"/>
+      <viewAttribute id="VBKD_IHREZ_E"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="SALESFORCE_HANA.db::VBKD">
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBKD_VBELN" source="VBELN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBKD_POSNR" source="POSNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBKD_BSTKD" source="BSTKD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBKD_IHREZ" source="IHREZ"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBKD_IHREZ_E" source="IHREZ_E"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="j_with_VBKD" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="VBEP_VBELN"/>
+      <viewAttribute id="VBEP_POSNR"/>
+      <viewAttribute id="VBEP_EDATU"/>
+      <viewAttribute id="VBAP_MATNR"/>
+      <viewAttribute id="VBAP_KWMENG" aggregationType="sum"/>
+      <viewAttribute id="VBAP_LGORT"/>
+      <viewAttribute id="VBAK_AUGRU"/>
+      <viewAttribute id="VBAK_BNAME"/>
+      <viewAttribute id="VBKD_BSTKD"/>
+      <viewAttribute id="VBKD_IHREZ"/>
+      <viewAttribute id="VBKD_IHREZ_E"/>
+      <viewAttribute id="VBAP_KNUMV_ANA"/>
+    
+      <viewAttribute id="VBAK_KUNNR"/>
+    
+      <viewAttribute id="VBAK_AUDAT"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="j_with_VBAK">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_VBELN" source="VBEP_VBELN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_POSNR" source="VBEP_POSNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_EDATU" source="VBEP_EDATU"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_MATNR" source="VBAP_MATNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_KWMENG" source="VBAP_KWMENG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_LGORT" source="VBAP_LGORT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_AUGRU" source="VBAK_AUGRU"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_BNAME" source="VBAK_BNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_KNUMV_ANA" source="VBAP_KNUMV_ANA"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_KUNNR" source="VBAK_KUNNR"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_AUDAT" source="VBAK_AUDAT"/>
+    </input>
+    <input node="pVBKD">
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBKD_BSTKD" source="VBKD_BSTKD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBKD_IHREZ" source="VBKD_IHREZ"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBKD_IHREZ_E" source="VBKD_IHREZ_E"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_VBELN" source="VBKD_VBELN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_POSNR" source="VBKD_POSNR"/>
+    </input>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="VBEP_VBELN"/>
+    <joinAttribute name="VBEP_POSNR"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="j_with_VBKD">
+  <attributes>
+    <attribute id="MANDT" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MANDT"/>
+      <keyMapping columnObjectName="j_with_VBKD" columnName="MANDT"/>
+    </attribute>
+    <attribute id="VBEP_VBELN" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VBELN"/>
+      <keyMapping columnObjectName="j_with_VBKD" columnName="VBEP_VBELN"/>
+    </attribute>
+    <attribute id="VBEP_POSNR" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="POSNR"/>
+      <keyMapping columnObjectName="j_with_VBKD" columnName="VBEP_POSNR"/>
+    </attribute>
+    <attribute id="VBEP_EDATU" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EDATU"/>
+      <keyMapping columnObjectName="j_with_VBKD" columnName="VBEP_EDATU"/>
+    </attribute>
+    <attribute id="VBAP_MATNR" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MATNR"/>
+      <keyMapping columnObjectName="j_with_VBKD" columnName="VBAP_MATNR"/>
+    </attribute>
+    <attribute id="VBAP_LGORT" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LGORT"/>
+      <keyMapping columnObjectName="j_with_VBKD" columnName="VBAP_LGORT"/>
+    </attribute>
+    <attribute id="VBAK_AUGRU" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="AUGRU"/>
+      <keyMapping columnObjectName="j_with_VBKD" columnName="VBAK_AUGRU"/>
+    </attribute>
+    <attribute id="VBAK_BNAME" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BNAME"/>
+      <keyMapping columnObjectName="j_with_VBKD" columnName="VBAK_BNAME"/>
+    </attribute>
+    <attribute id="VBKD_BSTKD" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BSTKD"/>
+      <keyMapping columnObjectName="j_with_VBKD" columnName="VBKD_BSTKD"/>
+    </attribute>
+    <attribute id="VBKD_IHREZ" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IHREZ"/>
+      <keyMapping columnObjectName="j_with_VBKD" columnName="VBKD_IHREZ"/>
+    </attribute>
+    <attribute id="VBKD_IHREZ_E" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IHREZ_E"/>
+      <keyMapping columnObjectName="j_with_VBKD" columnName="VBKD_IHREZ_E"/>
+    </attribute>
+    <attribute id="VBAP_KNUMV_ANA" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="KNUMV_ANA"/>
+      <keyMapping columnObjectName="j_with_VBKD" columnName="VBAP_KNUMV_ANA"/>
+    </attribute>
+  
+    <attribute id="VBAK_KUNNR" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VBAK_KUNNR"/>
+  
+      <keyMapping columnObjectName="j_with_VBKD" columnName="VBAK_KUNNR"/>
+  
+    </attribute>
+  
+    <attribute id="VBAK_AUDAT" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VBAK_AUDAT"/>
+      <keyMapping columnObjectName="j_with_VBKD" columnName="VBAK_AUDAT"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="VBAP_KWMENG" order="6" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="KWMENG"/>
+      <measureMapping columnObjectName="j_with_VBKD" columnName="VBAP_KWMENG"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="566" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="pVBEP" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="91" y="676"/>
+      <rectangleSize height="30" width="269"/>
+    </shape>
+    <shape expanded="true" modelObjectName="pVBAP" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="411" y="676"/>
+      <rectangleSize height="30" width="259"/>
+    </shape>
+    <shape expanded="true" modelObjectName="jVBEP_VBAP" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="173" y="516"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="pVBEP" modelObjectNameSpace="jVBEP_VBAP" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="104"/>
+    </shape>
+    <shape modelObjectName="pVBAP" modelObjectNameSpace="jVBEP_VBAP" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="104"/>
+    </shape>
+    <shape expanded="true" modelObjectName="pVBAK" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="491" y="516"/>
+      <rectangleSize height="30" width="230"/>
+    </shape>
+    <shape expanded="true" modelObjectName="j_with_VBAK" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="199" y="356"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="jVBEP_VBAP" modelObjectNameSpace="j_with_VBAK" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="pVBAK" modelObjectNameSpace="j_with_VBAK" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="125"/>
+    </shape>
+    <shape expanded="true" modelObjectName="pVBKD" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="623" y="356"/>
+      <rectangleSize height="30" width="265"/>
+    </shape>
+    <shape expanded="true" modelObjectName="j_with_VBKD" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="566" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="j_with_VBAK" modelObjectNameSpace="j_with_VBKD" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="pVBKD" modelObjectNameSpace="j_with_VBKD" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="168"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
