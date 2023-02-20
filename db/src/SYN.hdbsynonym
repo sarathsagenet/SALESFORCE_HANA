@@ -40,5 +40,17 @@
       "object": "PRCD_ELEMENTS",
       "schema": "SAPABAP1"
     }
+  },
+  "SALESFORCE_HANA.db::VBFA": {
+    "target": {
+      "object": "VBFA",
+      "schema": "SAPABAP1"
+    }
+  },
+  "SALESFORCE_HANA.db::LIPS": {
+    "target": {
+      "object": "LIPS",
+      "schema": "SAPABAP1"
+    }
   }
 }

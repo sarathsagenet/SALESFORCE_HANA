@@ -260,7 +260,7 @@
       <mapping xsi:type="Calculation:AttributeMapping" source="BPEXT" target="BUT000_BPEXT"/>
     </input>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="jGet_ShipTo_SF" cardinality="CN_N" joinType="inner">
+  <calculationView xsi:type="Calculation:JoinView" id="jGet_ShipTo_SF" cardinality="CN_1" joinType="inner">
     <viewAttributes>
       <viewAttribute id="MANDT"/>
       <viewAttribute id="VBEP_VBELN"/>
@@ -313,10 +313,10 @@
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="pBUT000_ShipTo">
     <viewAttributes>
-      <viewAttribute id="BUT000_CLIENT"/>
-      <viewAttribute id="BUT000_PARTNER"/>
       <viewAttribute id="BUT000_BPEXT"/>
-    </viewAttributes>
+    
+      <viewAttribute id="BUT000_CLIENT"/>
+      <viewAttribute id="BUT000_PARTNER"/></viewAttributes>
     <calculatedViewAttributes/>
     <input node="pBUT000_ShipTo$$$$SALESFORCE_HANA.db::BUT000$$">
       <mapping xsi:type="Calculation:AttributeMapping" target="BUT000_CLIENT" source="CLIENT"/>
@@ -392,7 +392,9 @@
   
     <attribute id="BUT000_BPEXT_SHIPTO" order="18" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="BUT000_BPEXT_SHIPTO"/>
+  
       <keyMapping columnObjectName="jGet_ShipTo_SF" columnName="BUT000_BPEXT_SHIPTO"/>
+  
     </attribute>
   </attributes>
   <calculatedAttributes/>
@@ -417,17 +419,17 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectNameSpace="MeasureGroup" modelObjectName="Output">
-      <upperLeftCorner x="760.8940940161822" y="112"/>
+      <upperLeftCorner x="760" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="pSAPData_Salesforce_SO_CalcView">
-      <upperLeftCorner x="92.00000000000003" y="836.9999952316284"/>
+      <upperLeftCorner x="92" y="836"/>
       <rectangleSize width="327" height="30"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="jGet_Y002Amount">
-      <upperLeftCorner x="202.16666666666666" y="676.9999964237213"/>
+      <upperLeftCorner x="202" y="676"/>
       <rectangleSize width="160" height="30"/>
     </shape>
     <shape modelObjectNameSpace="jGet_Y002Amount" modelObjectType="JoinNodeInput" modelObjectName="pSAPData_Salesforce_SO_CalcView">
@@ -439,15 +441,15 @@
       <rectangleSize width="228"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="pPRCD_ELEMENTS_Y002">
-      <upperLeftCorner x="468.9999999999999" y="836.9999952316284"/>
+      <upperLeftCorner x="468" y="836"/>
       <rectangleSize width="263" height="30"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="pPRCD_ELEMENTS_ZPRS_AMT">
-      <upperLeftCorner x="531.6302424044129" y="676.9999964237213"/>
+      <upperLeftCorner x="531" y="676"/>
       <rectangleSize width="314" height="30"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="jGet_ZPRSAmount">
-      <upperLeftCorner x="228.83333333333326" y="516.9999976158142"/>
+      <upperLeftCorner x="228" y="516"/>
       <rectangleSize width="160" height="30"/>
     </shape>
     <shape modelObjectNameSpace="jGet_ZPRSAmount" modelObjectType="JoinNodeInput" modelObjectName="jGet_Y002Amount">
@@ -460,7 +462,7 @@
     </shape>
   
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="jGet_SoldTo_SF">
-      <upperLeftCorner x="255.4999999999999" y="356.9999988079071"/>
+      <upperLeftCorner x="255" y="356"/>
       <rectangleSize width="160" height="30"/>
     </shape>
     <shape modelObjectNameSpace="jGet_SoldTo_SF" modelObjectType="JoinNodeInput" modelObjectName="jGet_ZPRSAmount">
@@ -472,12 +474,12 @@
       <rectangleSize width="116"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="pBUT000">
-      <upperLeftCorner x="689.1482878993917" y="516.9999976158142"/>
+      <upperLeftCorner x="689" y="516"/>
       <rectangleSize width="270" height="30"/>
     </shape>
   
     <shape expanded="true" modelObjectName="jGet_ShipTo_SF" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="760.8940940161823" y="217"/>
+      <upperLeftCorner x="760" y="217"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="jGet_SoldTo_SF" modelObjectNameSpace="jGet_ShipTo_SF" modelObjectType="JoinNodeInput">
@@ -486,11 +488,11 @@
     </shape>
     <shape modelObjectName="pBUT000_ShipTo" modelObjectNameSpace="jGet_ShipTo_SF" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="320" y="30"/>
-      <rectangleSize width="184.01708984375"/>
+      <rectangleSize width="184"/>
     </shape>
     <shape expanded="true" modelObjectName="pBUT000_ShipTo" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="811.8542540463826" y="356.9999988079071"/>
-      <rectangleSize height="30" width="233.0000000000001"/>
+      <upperLeftCorner x="811" y="356"/>
+      <rectangleSize height="30" width="233"/>
     </shape>
   </shapes>
 </layout>
