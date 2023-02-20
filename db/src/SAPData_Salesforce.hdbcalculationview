@@ -35,6 +35,8 @@
       <viewAttribute id="VBAP_KNUMV_ANA"/>
     
       <viewAttribute id="VBAK_KUNNR"/>
+    
+      <viewAttribute id="VBAK_AUDAT"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="SALESFORCE_HANA.db::SAPData_Salesforce_SO"/>
@@ -57,6 +59,8 @@
       <viewAttribute id="PRCD_ELEMENTS_KBETR_Y002" aggregationType="sum"/>
     
       <viewAttribute id="VBAK_KUNNR"/>
+    
+      <viewAttribute id="VBAK_AUDAT"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="pSAPData_Salesforce_SO_CalcView">
@@ -75,6 +79,8 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_KNUMV_ANA" source="VBAP_KNUMV_ANA"/>
     
       <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_KUNNR" source="VBAK_KUNNR"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_AUDAT" source="VBAK_AUDAT"/>
     </input>
     <input node="pPRCD_ELEMENTS_Y002">
       <mapping xsi:type="Calculation:AttributeMapping" target="PRCD_ELEMENTS_KBETR_Y002" source="PRCD_ELEMENTS_KBETR"/>
@@ -144,6 +150,8 @@
       <viewAttribute id="PRCD_ELEMENTS_KBETR_ZPRS" aggregationType="sum"/>
     
       <viewAttribute id="VBAK_KUNNR"/>
+    
+      <viewAttribute id="VBAK_AUDAT"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="jGet_Y002Amount">
@@ -163,6 +171,8 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="PRCD_ELEMENTS_KBETR_Y002" source="PRCD_ELEMENTS_KBETR_Y002"/>
     
       <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_KUNNR" source="VBAK_KUNNR"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_AUDAT" source="VBAK_AUDAT"/>
     </input>
     <input node="pPRCD_ELEMENTS_ZPRS_AMT">
       <mapping xsi:type="Calculation:AttributeMapping" target="PRCD_ELEMENTS_KBETR_ZPRS" source="PRCD_ELEMENTS_KBETR"/>
@@ -191,6 +201,7 @@
       <viewAttribute id="PRCD_ELEMENTS_KBETR_ZPRS" aggregationType="sum"/>
     
       <viewAttribute id="BUT000_BPEXT_SOLDTO"/>
+      <viewAttribute id="VBAK_AUDAT"/>
       <viewAttribute hidden="true" id="JOIN$VBAK_KUNNR$BUT000_PARTNER"/>
     </viewAttributes>
     <calculatedViewAttributes/>
@@ -210,7 +221,7 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_KNUMV_ANA" source="VBAP_KNUMV_ANA"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PRCD_ELEMENTS_KBETR_Y002" source="PRCD_ELEMENTS_KBETR_Y002"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PRCD_ELEMENTS_KBETR_ZPRS" source="PRCD_ELEMENTS_KBETR_ZPRS"/>
-    
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_AUDAT" source="VBAK_AUDAT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$VBAK_KUNNR$BUT000_PARTNER" source="VBAK_KUNNR"/>
     </input>
     <input node="pBUT000">
@@ -223,10 +234,10 @@
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="pBUT000">
     <viewAttributes>
-      <viewAttribute id="BUT000_CLIENT"/>
-      <viewAttribute id="BUT000_PARTNER"/>
       <viewAttribute id="BUT000_BPEXT"/>
-    </viewAttributes>
+    
+      <viewAttribute id="BUT000_CLIENT"/>
+      <viewAttribute id="BUT000_PARTNER"/></viewAttributes>
     <calculatedViewAttributes/>
     <input node="SALESFORCE_HANA.db::BUT000">
       <mapping xsi:type="Calculation:AttributeMapping" target="BUT000_CLIENT" source="CLIENT"/>
@@ -288,7 +299,14 @@
   
     <attribute id="BUT000_BPEXT_SOLDTO" order="16" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="BUT000_BPEXT"/>
+  
       <keyMapping columnObjectName="jGet_SoldTo_SF" columnName="BUT000_BPEXT_SOLDTO"/>
+  
+    </attribute>
+  
+    <attribute id="VBAK_AUDAT" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VBAK_AUDAT"/>
+      <keyMapping columnObjectName="jGet_SoldTo_SF" columnName="VBAK_AUDAT"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
