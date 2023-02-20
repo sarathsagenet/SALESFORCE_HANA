@@ -42,6 +42,8 @@
       <viewAttribute id="VBAK_AUDAT"/>
     
       <viewAttribute id="VBPA_KUNNR_forShipTo"/>
+    
+      <viewAttribute id="LIPS_LFIMG"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="SALESFORCE_HANA.db.Calculation Views::SAPData_Salesforce_SO"/>
@@ -68,6 +70,8 @@
       <viewAttribute id="VBAK_AUDAT"/>
     
       <viewAttribute id="VBPA_KUNNR_forShipTo"/>
+    
+      <viewAttribute id="LIPS_LFIMG" aggregationType="sum"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="pSAPData_Salesforce_SO_CalcView">
@@ -90,6 +94,8 @@
       <mapping xsi:type="Calculation:AttributeMapping" source="VBAK_AUDAT" target="VBAK_AUDAT"/>
     
       <mapping xsi:type="Calculation:AttributeMapping" target="VBPA_KUNNR_forShipTo" source="VBPA_KUNNR_forShipTo"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="LIPS_LFIMG" source="LIPS_LFIMG"/>
     </input>
     <input node="pPRCD_ELEMENTS_Y002">
       <mapping xsi:type="Calculation:AttributeMapping" source="PRCD_ELEMENTS_KBETR" target="PRCD_ELEMENTS_KBETR_Y002"/>
@@ -163,6 +169,8 @@
       <viewAttribute id="VBAK_AUDAT"/>
     
       <viewAttribute id="VBPA_KUNNR_forShipTo"/>
+    
+      <viewAttribute id="LIPS_LFIMG" aggregationType="sum"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="jGet_Y002Amount">
@@ -186,6 +194,8 @@
       <mapping xsi:type="Calculation:AttributeMapping" source="VBAK_AUDAT" target="VBAK_AUDAT"/>
     
       <mapping xsi:type="Calculation:AttributeMapping" target="VBPA_KUNNR_forShipTo" source="VBPA_KUNNR_forShipTo"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="LIPS_LFIMG" source="LIPS_LFIMG"/>
     </input>
     <input node="pPRCD_ELEMENTS_ZPRS_AMT">
       <mapping xsi:type="Calculation:AttributeMapping" source="PRCD_ELEMENTS_KBETR" target="PRCD_ELEMENTS_KBETR_ZPRS"/>
@@ -216,6 +226,7 @@
       <viewAttribute id="BUT000_BPEXT_SOLDTO"/>
       <viewAttribute id="VBAK_AUDAT"/>
       <viewAttribute id="VBPA_KUNNR_forShipTo"/>
+      <viewAttribute id="LIPS_LFIMG" aggregationType="sum"/>
       <viewAttribute hidden="true" id="JOIN$VBAK_KUNNR$BUT000_PARTNER"/>
     </viewAttributes>
     <calculatedViewAttributes/>
@@ -237,6 +248,7 @@
       <mapping xsi:type="Calculation:AttributeMapping" source="PRCD_ELEMENTS_KBETR_ZPRS" target="PRCD_ELEMENTS_KBETR_ZPRS"/>
       <mapping xsi:type="Calculation:AttributeMapping" source="VBAK_AUDAT" target="VBAK_AUDAT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="VBPA_KUNNR_forShipTo" source="VBPA_KUNNR_forShipTo"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LIPS_LFIMG" source="LIPS_LFIMG"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$VBAK_KUNNR$BUT000_PARTNER" source="VBAK_KUNNR"/>
     </input>
     <input node="pBUT000">
@@ -281,6 +293,8 @@
       <viewAttribute id="VBAK_AUDAT"/>
       <viewAttribute id="VBPA_KUNNR_forShipTo"/>
       <viewAttribute id="BUT000_BPEXT_SHIPTO"/>
+    
+      <viewAttribute id="LIPS_LFIMG" aggregationType="sum"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="jGet_SoldTo_SF">
@@ -302,6 +316,8 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="BUT000_BPEXT_SOLDTO" source="BUT000_BPEXT_SOLDTO"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_AUDAT" source="VBAK_AUDAT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="VBPA_KUNNR_forShipTo" source="VBPA_KUNNR_forShipTo"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="LIPS_LFIMG" source="LIPS_LFIMG"/>
     </input>
     <input node="pBUT000_ShipTo">
       <mapping xsi:type="Calculation:AttributeMapping" target="BUT000_BPEXT_SHIPTO" source="BUT000_BPEXT"/>
@@ -410,6 +426,11 @@
     <measure aggregationType="sum" id="PRCD_ELEMENTS_KBETR_ZPRS" order="15" measureType="simple">
       <descriptions defaultDescription="PRCD_ELEMENTS_KBETR_ZPRS"/>
       <measureMapping columnObjectName="jGet_ShipTo_SF" columnName="PRCD_ELEMENTS_KBETR_ZPRS"/>
+    </measure>
+  
+    <measure id="LIPS_LFIMG" order="19" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="LIPS_LFIMG"/>
+      <measureMapping columnObjectName="jGet_ShipTo_SF" columnName="LIPS_LFIMG"/>
     </measure>
   </baseMeasures>
   <calculatedMeasures/>
