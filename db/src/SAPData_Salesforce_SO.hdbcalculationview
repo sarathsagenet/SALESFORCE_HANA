@@ -87,11 +87,15 @@
       <viewAttribute id="VBELN"/>
       <viewAttribute id="VBAK_AUGRU"/>
       <viewAttribute id="VBAK_BNAME"/>
+    
+      <viewAttribute id="VBAK_KUNNR"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="SALESFORCE_HANA.db::VBAK">
       <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_AUGRU" source="AUGRU"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_BNAME" source="BNAME"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_KUNNR" source="KUNNR"/>
     </input>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="j_with_VBAK" cardinality="CN_1" joinType="leftOuter">
@@ -106,6 +110,8 @@
       <viewAttribute id="VBAK_AUGRU"/>
       <viewAttribute id="VBAK_BNAME"/>
       <viewAttribute id="VBAP_KNUMV_ANA"/>
+    
+      <viewAttribute id="VBAK_KUNNR"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="jVBEP_VBAP">
@@ -121,6 +127,7 @@
     <input node="pVBAK">
       <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_AUGRU" source="VBAK_AUGRU"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_BNAME" source="VBAK_BNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_KUNNR" source="VBAK_KUNNR"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_VBELN" source="VBELN"/>
     </input>
@@ -160,6 +167,8 @@
       <viewAttribute id="VBKD_IHREZ"/>
       <viewAttribute id="VBKD_IHREZ_E"/>
       <viewAttribute id="VBAP_KNUMV_ANA"/>
+    
+      <viewAttribute id="VBAK_KUNNR"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="j_with_VBAK">
@@ -173,6 +182,8 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_AUGRU" source="VBAK_AUGRU"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_BNAME" source="VBAK_BNAME"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_KNUMV_ANA" source="VBAP_KNUMV_ANA"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_KUNNR" source="VBAK_KUNNR"/>
     </input>
     <input node="pVBKD">
       <mapping xsi:type="Calculation:AttributeMapping" target="VBKD_BSTKD" source="VBKD_BSTKD"/>
@@ -236,6 +247,11 @@
     <attribute id="VBAP_KNUMV_ANA" order="13" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="KNUMV_ANA"/>
       <keyMapping columnObjectName="j_with_VBKD" columnName="VBAP_KNUMV_ANA"/>
+    </attribute>
+  
+    <attribute id="VBAK_KUNNR" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VBAK_KUNNR"/>
+      <keyMapping columnObjectName="j_with_VBKD" columnName="VBAK_KUNNR"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
