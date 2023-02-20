@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SALESFORCE_HANA.db::SAPData_Salesforce_SO" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SALESFORCE_HANA.db.Calculation Views::SAPData_Salesforce_SO" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
 <descriptions defaultDescription="SAP Data for Salesforce Comparison"/>
 <localVariables/>
 <variableMappings/>
@@ -269,7 +269,9 @@
   
     <attribute id="VBAK_AUDAT" order="15" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="VBAK_AUDAT"/>
+  
       <keyMapping columnObjectName="j_with_VBKD" columnName="VBAK_AUDAT"/>
+  
     </attribute>
   </attributes>
   <calculatedAttributes/>

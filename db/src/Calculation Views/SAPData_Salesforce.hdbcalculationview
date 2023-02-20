@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SALESFORCE_HANA.db::SAPData_Salesforce" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" dataCategory="CUBE" cacheInvalidationPeriod="NONE" id="SALESFORCE_HANA.db.Calculation Views::SAPData_Salesforce" applyPrivilegeType="NONE" outputViewType="Aggregation" enforceSqlExecution="false">
 <descriptions defaultDescription="SAP Data for Salesforce Comparison - Query View"/>
 <localVariables/>
 <variableMappings/>
 <dataSources>
-  <DataSource id="SALESFORCE_HANA.db::SAPData_Salesforce_SO">
-    <resourceUri>SALESFORCE_HANA.db::SAPData_Salesforce_SO</resourceUri>
+  <DataSource id="SALESFORCE_HANA.db.Calculation Views::SAPData_Salesforce_SO">
+    <resourceUri>SALESFORCE_HANA.db.Calculation Views::SAPData_Salesforce_SO</resourceUri>
   </DataSource>
   <DataSource id="SALESFORCE_HANA.db::PRCD_ELEMENTS">
     <resourceUri>SALESFORCE_HANA.db::PRCD_ELEMENTS</resourceUri>
@@ -39,7 +39,7 @@
       <viewAttribute id="VBAK_AUDAT"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="SALESFORCE_HANA.db::SAPData_Salesforce_SO"/>
+    <input node="SALESFORCE_HANA.db.Calculation Views::SAPData_Salesforce_SO"/>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="jGet_Y002Amount" joinType="leftOuter">
     <viewAttributes>
@@ -48,7 +48,7 @@
       <viewAttribute id="VBEP_POSNR"/>
       <viewAttribute id="VBEP_EDATU"/>
       <viewAttribute id="VBAP_MATNR"/>
-      <viewAttribute id="VBAP_KWMENG" aggregationType="sum"/>
+      <viewAttribute aggregationType="sum" id="VBAP_KWMENG"/>
       <viewAttribute id="VBAP_LGORT"/>
       <viewAttribute id="VBAK_AUGRU"/>
       <viewAttribute id="VBAK_BNAME"/>
@@ -56,7 +56,7 @@
       <viewAttribute id="VBKD_IHREZ"/>
       <viewAttribute id="VBKD_IHREZ_E"/>
       <viewAttribute id="VBAP_KNUMV_ANA"/>
-      <viewAttribute id="PRCD_ELEMENTS_KBETR_Y002" aggregationType="sum"/>
+      <viewAttribute aggregationType="sum" id="PRCD_ELEMENTS_KBETR_Y002"/>
     
       <viewAttribute id="VBAK_KUNNR"/>
     
@@ -64,26 +64,26 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="pSAPData_Salesforce_SO_CalcView">
-      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_VBELN" source="VBEP_VBELN"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_POSNR" source="VBEP_POSNR"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_EDATU" source="VBEP_EDATU"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_MATNR" source="VBAP_MATNR"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_KWMENG" source="VBAP_KWMENG"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_LGORT" source="VBAP_LGORT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_AUGRU" source="VBAK_AUGRU"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_BNAME" source="VBAK_BNAME"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBKD_BSTKD" source="VBKD_BSTKD"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBKD_IHREZ" source="VBKD_IHREZ"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBKD_IHREZ_E" source="VBKD_IHREZ_E"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_KNUMV_ANA" source="VBAP_KNUMV_ANA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="MANDT" target="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBEP_VBELN" target="VBEP_VBELN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBEP_POSNR" target="VBEP_POSNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBEP_EDATU" target="VBEP_EDATU"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBAP_MATNR" target="VBAP_MATNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBAP_KWMENG" target="VBAP_KWMENG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBAP_LGORT" target="VBAP_LGORT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBAK_AUGRU" target="VBAK_AUGRU"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBAK_BNAME" target="VBAK_BNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBKD_BSTKD" target="VBKD_BSTKD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBKD_IHREZ" target="VBKD_IHREZ"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBKD_IHREZ_E" target="VBKD_IHREZ_E"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBAP_KNUMV_ANA" target="VBAP_KNUMV_ANA"/>
     
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_KUNNR" source="VBAK_KUNNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBAK_KUNNR" target="VBAK_KUNNR"/>
     
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_AUDAT" source="VBAK_AUDAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBAK_AUDAT" target="VBAK_AUDAT"/>
     </input>
     <input node="pPRCD_ELEMENTS_Y002">
-      <mapping xsi:type="Calculation:AttributeMapping" target="PRCD_ELEMENTS_KBETR_Y002" source="PRCD_ELEMENTS_KBETR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="PRCD_ELEMENTS_KBETR" target="PRCD_ELEMENTS_KBETR_Y002"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="CLIENT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_KNUMV_ANA" source="PRCD_ELEMENTS_KNUMV"/>
     </input>
@@ -107,10 +107,10 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="SALESFORCE_HANA.db::PRCD_ELEMENTS">
-      <mapping xsi:type="Calculation:AttributeMapping" target="PRCD_ELEMENTS_KBETR" source="KBETR"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PRCD_ELEMENTS_KSCHL" source="KSCHL"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PRCD_ELEMENTS_KNUMV" source="KNUMV"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PRCD_ELEMENTS_KINAK" source="KINAK"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="KBETR" target="PRCD_ELEMENTS_KBETR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="KSCHL" target="PRCD_ELEMENTS_KSCHL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="KNUMV" target="PRCD_ELEMENTS_KNUMV"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="KINAK" target="PRCD_ELEMENTS_KINAK"/>
     </input>
     <filter>(&quot;PRCD_ELEMENTS_KSCHL&quot; = 'Y002') AND (&quot;PRCD_ELEMENTS_KINAK&quot; &lt;&gt; 'X')</filter>
   </calculationView>
@@ -124,10 +124,10 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="pPRCD_ELEMENTS_ZPRS_AMT$$$$SALESFORCE_HANA.db::PRCD_ELEMENTS$$">
-      <mapping xsi:type="Calculation:AttributeMapping" target="PRCD_ELEMENTS_KNUMV" source="KNUMV"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PRCD_ELEMENTS_KBETR" source="KBETR"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PRCD_ELEMENTS_KSCHL" source="KSCHL"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PRCD_ELEMENTS_KINAK" source="KINAK"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="KNUMV" target="PRCD_ELEMENTS_KNUMV"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="KBETR" target="PRCD_ELEMENTS_KBETR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="KSCHL" target="PRCD_ELEMENTS_KSCHL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="KINAK" target="PRCD_ELEMENTS_KINAK"/>
     </input>
     <filter>(&quot;PRCD_ELEMENTS_KSCHL&quot; = 'ZPRS') AND (&quot;PRCD_ELEMENTS_KINAK&quot; &lt;&gt; 'X')</filter>
   </calculationView>
@@ -138,7 +138,7 @@
       <viewAttribute id="VBEP_POSNR"/>
       <viewAttribute id="VBEP_EDATU"/>
       <viewAttribute id="VBAP_MATNR"/>
-      <viewAttribute id="VBAP_KWMENG" aggregationType="sum"/>
+      <viewAttribute aggregationType="sum" id="VBAP_KWMENG"/>
       <viewAttribute id="VBAP_LGORT"/>
       <viewAttribute id="VBAK_AUGRU"/>
       <viewAttribute id="VBAK_BNAME"/>
@@ -146,8 +146,8 @@
       <viewAttribute id="VBKD_IHREZ"/>
       <viewAttribute id="VBKD_IHREZ_E"/>
       <viewAttribute id="VBAP_KNUMV_ANA"/>
-      <viewAttribute id="PRCD_ELEMENTS_KBETR_Y002" aggregationType="sum"/>
-      <viewAttribute id="PRCD_ELEMENTS_KBETR_ZPRS" aggregationType="sum"/>
+      <viewAttribute aggregationType="sum" id="PRCD_ELEMENTS_KBETR_Y002"/>
+      <viewAttribute aggregationType="sum" id="PRCD_ELEMENTS_KBETR_ZPRS"/>
     
       <viewAttribute id="VBAK_KUNNR"/>
     
@@ -155,27 +155,27 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="jGet_Y002Amount">
-      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_VBELN" source="VBEP_VBELN"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_POSNR" source="VBEP_POSNR"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_EDATU" source="VBEP_EDATU"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_MATNR" source="VBAP_MATNR"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_KWMENG" source="VBAP_KWMENG"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_LGORT" source="VBAP_LGORT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_AUGRU" source="VBAK_AUGRU"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_BNAME" source="VBAK_BNAME"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBKD_BSTKD" source="VBKD_BSTKD"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBKD_IHREZ" source="VBKD_IHREZ"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBKD_IHREZ_E" source="VBKD_IHREZ_E"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_KNUMV_ANA" source="VBAP_KNUMV_ANA"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PRCD_ELEMENTS_KBETR_Y002" source="PRCD_ELEMENTS_KBETR_Y002"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="MANDT" target="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBEP_VBELN" target="VBEP_VBELN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBEP_POSNR" target="VBEP_POSNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBEP_EDATU" target="VBEP_EDATU"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBAP_MATNR" target="VBAP_MATNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBAP_KWMENG" target="VBAP_KWMENG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBAP_LGORT" target="VBAP_LGORT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBAK_AUGRU" target="VBAK_AUGRU"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBAK_BNAME" target="VBAK_BNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBKD_BSTKD" target="VBKD_BSTKD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBKD_IHREZ" target="VBKD_IHREZ"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBKD_IHREZ_E" target="VBKD_IHREZ_E"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBAP_KNUMV_ANA" target="VBAP_KNUMV_ANA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="PRCD_ELEMENTS_KBETR_Y002" target="PRCD_ELEMENTS_KBETR_Y002"/>
     
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_KUNNR" source="VBAK_KUNNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBAK_KUNNR" target="VBAK_KUNNR"/>
     
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_AUDAT" source="VBAK_AUDAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBAK_AUDAT" target="VBAK_AUDAT"/>
     </input>
     <input node="pPRCD_ELEMENTS_ZPRS_AMT">
-      <mapping xsi:type="Calculation:AttributeMapping" target="PRCD_ELEMENTS_KBETR_ZPRS" source="PRCD_ELEMENTS_KBETR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="PRCD_ELEMENTS_KBETR" target="PRCD_ELEMENTS_KBETR_ZPRS"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="CLIENT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_KNUMV_ANA" source="PRCD_ELEMENTS_KNUMV"/>
     </input>
@@ -189,7 +189,7 @@
       <viewAttribute id="VBEP_POSNR"/>
       <viewAttribute id="VBEP_EDATU"/>
       <viewAttribute id="VBAP_MATNR"/>
-      <viewAttribute id="VBAP_KWMENG" aggregationType="sum"/>
+      <viewAttribute aggregationType="sum" id="VBAP_KWMENG"/>
       <viewAttribute id="VBAP_LGORT"/>
       <viewAttribute id="VBAK_AUGRU"/>
       <viewAttribute id="VBAK_BNAME"/>
@@ -197,8 +197,8 @@
       <viewAttribute id="VBKD_IHREZ"/>
       <viewAttribute id="VBKD_IHREZ_E"/>
       <viewAttribute id="VBAP_KNUMV_ANA"/>
-      <viewAttribute id="PRCD_ELEMENTS_KBETR_Y002" aggregationType="sum"/>
-      <viewAttribute id="PRCD_ELEMENTS_KBETR_ZPRS" aggregationType="sum"/>
+      <viewAttribute aggregationType="sum" id="PRCD_ELEMENTS_KBETR_Y002"/>
+      <viewAttribute aggregationType="sum" id="PRCD_ELEMENTS_KBETR_ZPRS"/>
     
       <viewAttribute id="BUT000_BPEXT_SOLDTO"/>
       <viewAttribute id="VBAK_AUDAT"/>
@@ -206,26 +206,26 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="jGet_ZPRSAmount">
-      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_VBELN" source="VBEP_VBELN"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_POSNR" source="VBEP_POSNR"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_EDATU" source="VBEP_EDATU"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_MATNR" source="VBAP_MATNR"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_KWMENG" source="VBAP_KWMENG"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_LGORT" source="VBAP_LGORT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_AUGRU" source="VBAK_AUGRU"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_BNAME" source="VBAK_BNAME"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBKD_BSTKD" source="VBKD_BSTKD"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBKD_IHREZ" source="VBKD_IHREZ"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBKD_IHREZ_E" source="VBKD_IHREZ_E"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_KNUMV_ANA" source="VBAP_KNUMV_ANA"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PRCD_ELEMENTS_KBETR_Y002" source="PRCD_ELEMENTS_KBETR_Y002"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PRCD_ELEMENTS_KBETR_ZPRS" source="PRCD_ELEMENTS_KBETR_ZPRS"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_AUDAT" source="VBAK_AUDAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="MANDT" target="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBEP_VBELN" target="VBEP_VBELN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBEP_POSNR" target="VBEP_POSNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBEP_EDATU" target="VBEP_EDATU"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBAP_MATNR" target="VBAP_MATNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBAP_KWMENG" target="VBAP_KWMENG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBAP_LGORT" target="VBAP_LGORT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBAK_AUGRU" target="VBAK_AUGRU"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBAK_BNAME" target="VBAK_BNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBKD_BSTKD" target="VBKD_BSTKD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBKD_IHREZ" target="VBKD_IHREZ"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBKD_IHREZ_E" target="VBKD_IHREZ_E"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBAP_KNUMV_ANA" target="VBAP_KNUMV_ANA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="PRCD_ELEMENTS_KBETR_Y002" target="PRCD_ELEMENTS_KBETR_Y002"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="PRCD_ELEMENTS_KBETR_ZPRS" target="PRCD_ELEMENTS_KBETR_ZPRS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="VBAK_AUDAT" target="VBAK_AUDAT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$VBAK_KUNNR$BUT000_PARTNER" source="VBAK_KUNNR"/>
     </input>
     <input node="pBUT000">
-      <mapping xsi:type="Calculation:AttributeMapping" target="BUT000_BPEXT_SOLDTO" source="BUT000_BPEXT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="BUT000_BPEXT" target="BUT000_BPEXT_SOLDTO"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="BUT000_CLIENT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$VBAK_KUNNR$BUT000_PARTNER" source="BUT000_PARTNER"/>
     </input>
@@ -240,86 +240,88 @@
       <viewAttribute id="BUT000_PARTNER"/></viewAttributes>
     <calculatedViewAttributes/>
     <input node="SALESFORCE_HANA.db::BUT000">
-      <mapping xsi:type="Calculation:AttributeMapping" target="BUT000_CLIENT" source="CLIENT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="BUT000_PARTNER" source="PARTNER"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="BUT000_BPEXT" source="BPEXT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="CLIENT" target="BUT000_CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="PARTNER" target="BUT000_PARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="BPEXT" target="BUT000_BPEXT"/>
     </input>
   </calculationView>
 </calculationViews>
 <logicalModel id="jGet_SoldTo_SF">
   <attributes>
-    <attribute id="MANDT" order="1" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="MANDT" displayAttribute="false" order="1" attributeHierarchyActive="false">
       <descriptions defaultDescription="MANDT"/>
       <keyMapping columnObjectName="jGet_SoldTo_SF" columnName="MANDT"/>
     </attribute>
-    <attribute id="VBEP_VBELN" order="2" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="VBEP_VBELN" displayAttribute="false" order="2" attributeHierarchyActive="false">
       <descriptions defaultDescription="VBEP_VBELN"/>
       <keyMapping columnObjectName="jGet_SoldTo_SF" columnName="VBEP_VBELN"/>
     </attribute>
-    <attribute id="VBEP_POSNR" order="3" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="VBEP_POSNR" displayAttribute="false" order="3" attributeHierarchyActive="false">
       <descriptions defaultDescription="VBEP_POSNR"/>
       <keyMapping columnObjectName="jGet_SoldTo_SF" columnName="VBEP_POSNR"/>
     </attribute>
-    <attribute id="VBEP_EDATU" order="4" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="VBEP_EDATU" displayAttribute="false" order="4" attributeHierarchyActive="false">
       <descriptions defaultDescription="VBEP_EDATU"/>
       <keyMapping columnObjectName="jGet_SoldTo_SF" columnName="VBEP_EDATU"/>
     </attribute>
-    <attribute id="VBAP_MATNR" order="5" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="VBAP_MATNR" displayAttribute="false" order="5" attributeHierarchyActive="false">
       <descriptions defaultDescription="VBAP_MATNR"/>
       <keyMapping columnObjectName="jGet_SoldTo_SF" columnName="VBAP_MATNR"/>
     </attribute>
-    <attribute id="VBAP_LGORT" order="7" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="VBAP_LGORT" displayAttribute="false" order="7" attributeHierarchyActive="false">
       <descriptions defaultDescription="VBAP_LGORT"/>
       <keyMapping columnObjectName="jGet_SoldTo_SF" columnName="VBAP_LGORT"/>
     </attribute>
-    <attribute id="VBAK_AUGRU" order="8" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="VBAK_AUGRU" displayAttribute="false" order="8" attributeHierarchyActive="false">
       <descriptions defaultDescription="VBAK_AUGRU"/>
       <keyMapping columnObjectName="jGet_SoldTo_SF" columnName="VBAK_AUGRU"/>
     </attribute>
-    <attribute id="VBAK_BNAME" order="9" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="VBAK_BNAME" displayAttribute="false" order="9" attributeHierarchyActive="false">
       <descriptions defaultDescription="VBAK_BNAME"/>
       <keyMapping columnObjectName="jGet_SoldTo_SF" columnName="VBAK_BNAME"/>
     </attribute>
-    <attribute id="VBKD_BSTKD" order="10" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="VBKD_BSTKD" displayAttribute="false" order="10" attributeHierarchyActive="false">
       <descriptions defaultDescription="VBKD_BSTKD"/>
       <keyMapping columnObjectName="jGet_SoldTo_SF" columnName="VBKD_BSTKD"/>
     </attribute>
-    <attribute id="VBKD_IHREZ" order="11" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="VBKD_IHREZ" displayAttribute="false" order="11" attributeHierarchyActive="false">
       <descriptions defaultDescription="VBKD_IHREZ"/>
       <keyMapping columnObjectName="jGet_SoldTo_SF" columnName="VBKD_IHREZ"/>
     </attribute>
-    <attribute id="VBKD_IHREZ_E" order="12" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="VBKD_IHREZ_E" displayAttribute="false" order="12" attributeHierarchyActive="false">
       <descriptions defaultDescription="VBKD_IHREZ_E"/>
       <keyMapping columnObjectName="jGet_SoldTo_SF" columnName="VBKD_IHREZ_E"/>
     </attribute>
-    <attribute id="VBAP_KNUMV_ANA" order="13" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="VBAP_KNUMV_ANA" displayAttribute="false" order="13" attributeHierarchyActive="false">
       <descriptions defaultDescription="VBAP_KNUMV_ANA"/>
       <keyMapping columnObjectName="jGet_SoldTo_SF" columnName="VBAP_KNUMV_ANA"/>
     </attribute>
   
-    <attribute id="BUT000_BPEXT_SOLDTO" order="16" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="BUT000_BPEXT_SOLDTO" displayAttribute="false" order="16" attributeHierarchyActive="false">
       <descriptions defaultDescription="BUT000_BPEXT"/>
   
       <keyMapping columnObjectName="jGet_SoldTo_SF" columnName="BUT000_BPEXT_SOLDTO"/>
   
     </attribute>
   
-    <attribute id="VBAK_AUDAT" order="17" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="VBAK_AUDAT" displayAttribute="false" order="17" attributeHierarchyActive="false">
       <descriptions defaultDescription="VBAK_AUDAT"/>
+  
       <keyMapping columnObjectName="jGet_SoldTo_SF" columnName="VBAK_AUDAT"/>
+  
     </attribute>
   </attributes>
   <calculatedAttributes/>
   <baseMeasures>
-    <measure id="VBAP_KWMENG" order="6" aggregationType="sum" measureType="simple">
+    <measure aggregationType="sum" id="VBAP_KWMENG" order="6" measureType="simple">
       <descriptions defaultDescription="VBAP_KWMENG"/>
       <measureMapping columnObjectName="jGet_SoldTo_SF" columnName="VBAP_KWMENG"/>
     </measure>
-    <measure id="PRCD_ELEMENTS_KBETR_Y002" order="14" aggregationType="sum" measureType="simple">
+    <measure aggregationType="sum" id="PRCD_ELEMENTS_KBETR_Y002" order="14" measureType="simple">
       <descriptions defaultDescription="PRCD_ELEMENTS_KBETR_Y002"/>
       <measureMapping columnObjectName="jGet_SoldTo_SF" columnName="PRCD_ELEMENTS_KBETR_Y002"/>
     </measure>
-    <measure id="PRCD_ELEMENTS_KBETR_ZPRS" order="15" aggregationType="sum" measureType="simple">
+    <measure aggregationType="sum" id="PRCD_ELEMENTS_KBETR_ZPRS" order="15" measureType="simple">
       <descriptions defaultDescription="PRCD_ELEMENTS_KBETR_ZPRS"/>
       <measureMapping columnObjectName="jGet_SoldTo_SF" columnName="PRCD_ELEMENTS_KBETR_ZPRS"/>
     </measure>
@@ -330,64 +332,64 @@
 </logicalModel>
 <layout>
   <shapes>
-    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+    <shape expanded="true" modelObjectNameSpace="MeasureGroup" modelObjectName="Output">
       <upperLeftCorner x="654" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
-    <shape expanded="true" modelObjectName="pSAPData_Salesforce_SO_CalcView" modelObjectNameSpace="CalculationView">
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="pSAPData_Salesforce_SO_CalcView">
       <upperLeftCorner x="92" y="676"/>
-      <rectangleSize height="30" width="327"/>
+      <rectangleSize width="327" height="30"/>
     </shape>
-    <shape expanded="true" modelObjectName="jGet_Y002Amount" modelObjectNameSpace="CalculationView">
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="jGet_Y002Amount">
       <upperLeftCorner x="202" y="516"/>
-      <rectangleSize height="30" width="160"/>
+      <rectangleSize width="160" height="30"/>
     </shape>
-    <shape modelObjectName="pSAPData_Salesforce_SO_CalcView" modelObjectNameSpace="jGet_Y002Amount" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="jGet_Y002Amount" modelObjectType="JoinNodeInput" modelObjectName="pSAPData_Salesforce_SO_CalcView">
       <upperLeftCorner x="20" y="30"/>
       <rectangleSize width="272"/>
     </shape>
-    <shape modelObjectName="pPRCD_ELEMENTS_Y002" modelObjectNameSpace="jGet_Y002Amount" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="jGet_Y002Amount" modelObjectType="JoinNodeInput" modelObjectName="pPRCD_ELEMENTS_Y002">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="228"/>
     </shape>
-    <shape expanded="true" modelObjectName="pPRCD_ELEMENTS_Y002" modelObjectNameSpace="CalculationView">
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="pPRCD_ELEMENTS_Y002">
       <upperLeftCorner x="468" y="676"/>
-      <rectangleSize height="30" width="263"/>
+      <rectangleSize width="263" height="30"/>
     </shape>
-    <shape expanded="true" modelObjectName="pPRCD_ELEMENTS_ZPRS_AMT" modelObjectNameSpace="CalculationView">
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="pPRCD_ELEMENTS_ZPRS_AMT">
       <upperLeftCorner x="535" y="516"/>
-      <rectangleSize height="30" width="314"/>
+      <rectangleSize width="314" height="30"/>
     </shape>
-    <shape expanded="true" modelObjectName="jGet_ZPRSAmount" modelObjectNameSpace="CalculationView">
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="jGet_ZPRSAmount">
       <upperLeftCorner x="228" y="356"/>
-      <rectangleSize height="30" width="160"/>
+      <rectangleSize width="160" height="30"/>
     </shape>
-    <shape modelObjectName="jGet_Y002Amount" modelObjectNameSpace="jGet_ZPRSAmount" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="jGet_ZPRSAmount" modelObjectType="JoinNodeInput" modelObjectName="jGet_Y002Amount">
       <upperLeftCorner x="20" y="30"/>
       <rectangleSize width="250"/>
     </shape>
-    <shape modelObjectName="pPRCD_ELEMENTS_ZPRS_AMT" modelObjectNameSpace="jGet_ZPRSAmount" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="jGet_ZPRSAmount" modelObjectType="JoinNodeInput" modelObjectName="pPRCD_ELEMENTS_ZPRS_AMT">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="250"/>
     </shape>
   
-    <shape expanded="true" modelObjectName="jGet_SoldTo_SF" modelObjectNameSpace="CalculationView">
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="jGet_SoldTo_SF">
       <upperLeftCorner x="654" y="217"/>
-      <rectangleSize height="30" width="160"/>
+      <rectangleSize width="160" height="30"/>
     </shape>
-    <shape modelObjectName="jGet_ZPRSAmount" modelObjectNameSpace="jGet_SoldTo_SF" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="jGet_SoldTo_SF" modelObjectType="JoinNodeInput" modelObjectName="jGet_ZPRSAmount">
       <upperLeftCorner x="20" y="30"/>
       <rectangleSize width="250"/>
     </shape>
-    <shape modelObjectName="pBUT000" modelObjectNameSpace="jGet_SoldTo_SF" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="jGet_SoldTo_SF" modelObjectType="JoinNodeInput" modelObjectName="pBUT000">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="116"/>
     </shape>
-    <shape expanded="true" modelObjectName="pBUT000" modelObjectNameSpace="CalculationView">
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="pBUT000">
       <upperLeftCorner x="700" y="356"/>
-      <rectangleSize height="30" width="160"/>
+      <rectangleSize width="160" height="30"/>
     </shape>
   </shapes>
 </layout>
