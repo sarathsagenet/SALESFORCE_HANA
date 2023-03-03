@@ -18,17 +18,14 @@ modules:
 resources:
   - name: hdi_db
     parameters:
-      config:
-    	schema: SF_SCHEMA
+      config: 
+        schema: SF_SCHEMA
     properties:
       hdi-container-name: '${service-name}'
     type: com.sap.xs.hdi-container
-    
-    
-    
   - name: cross-container-service-1
     parameters:
-      service-name: DEVHANADB
+      service-name: XS_HANA_DB
     properties:
       the-service-name: '${service-name}'
     type: org.cloudfoundry.existing-service
