@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SALESFORCE_HANA.db.Calculation Views::SAPData_Salesforce_Compare" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="SAPData_Salesforce_Compare"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="SALESFORCE_HANA.db.Calculation Views::SAPData_Salesforce">
+    <resourceUri>SALESFORCE_HANA.db.Calculation Views::SAPData_Salesforce</resourceUri>
+  </DataSource>
+  <DataSource id="SALESFORCE_HANA.db::ZTSF_SERVCALLREP">
+    <resourceUri>SALESFORCE_HANA.db::ZTSF_SERVCALLREP</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="pSAPData">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="VBEP_VBELN"/>
+      <viewAttribute id="VBEP_POSNR"/>
+      <viewAttribute id="VBEP_EDATU"/>
+      <viewAttribute id="VBAP_MATNR"/>
+      <viewAttribute id="VBAP_KWMENG"/>
+      <viewAttribute id="VBAP_LGORT"/>
+      <viewAttribute id="VBAK_AUGRU"/>
+      <viewAttribute id="VBAK_BNAME"/>
+      <viewAttribute id="VBKD_BSTKD"/>
+      <viewAttribute id="VBKD_IHREZ"/>
+      <viewAttribute id="VBKD_IHREZ_E"/>
+      <viewAttribute id="VBAP_KNUMV_ANA"/>
+      <viewAttribute id="PRCD_ELEMENTS_KBETR_Y002"/>
+      <viewAttribute id="PRCD_ELEMENTS_KBETR_ZPRS"/>
+      <viewAttribute id="BUT000_BPEXT_SOLDTO"/>
+      <viewAttribute id="VBAK_AUDAT"/>
+      <viewAttribute id="BUT000_BPEXT_SHIPTO"/>
+      <viewAttribute id="LIPS_LFIMG"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="Flag" datatype="INTEGER" expressionLanguage="SQL">
+        <formula>0</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="SALESFORCE_HANA.db.Calculation Views::SAPData_Salesforce"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Salesforce_Data">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="SALES_ORDER"/>
+      <viewAttribute id="ITEM_REFERENCE_NUMBER"/>
+      <viewAttribute id="SOCREATION_DATE"/>
+      <viewAttribute id="SOLD_TO_PARTY"/>
+      <viewAttribute id="SHIP_TO_PARTY"/>
+      <viewAttribute id="PO_NUMBER"/>
+      <viewAttribute id="REQ_DELIVERY_DATE"/>
+      <viewAttribute id="ORDER_REASON"/>
+      <viewAttribute id="MATERIAL"/>
+      <viewAttribute id="ORDER_QUANTITY"/>
+      <viewAttribute id="STORAGE_LOCATION"/>
+      <viewAttribute id="CONDION_PRICE"/>
+      <viewAttribute id="UNIT_COST"/>
+      <viewAttribute id="VENDOR_NUMBER"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="Flag" datatype="INTEGER" expressionLanguage="SQL">
+        <formula>1</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="SALESFORCE_HANA.db::ZTSF_SERVCALLREP"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Only_In_SAP" joinType="leftOuter" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="VBEP_VBELN"/>
+      <viewAttribute id="VBEP_POSNR"/>
+      <viewAttribute id="VBEP_EDATU"/>
+      <viewAttribute id="VBAP_MATNR"/>
+      <viewAttribute id="VBAP_KWMENG" aggregationType="sum"/>
+      <viewAttribute id="VBAP_LGORT"/>
+      <viewAttribute id="VBAK_AUGRU"/>
+      <viewAttribute id="VBAK_BNAME"/>
+      <viewAttribute id="VBKD_BSTKD"/>
+      <viewAttribute id="VBKD_IHREZ"/>
+      <viewAttribute id="VBKD_IHREZ_E"/>
+      <viewAttribute id="VBAP_KNUMV_ANA"/>
+      <viewAttribute id="PRCD_ELEMENTS_KBETR_Y002" aggregationType="sum"/>
+      <viewAttribute id="PRCD_ELEMENTS_KBETR_ZPRS" aggregationType="sum"/>
+      <viewAttribute id="BUT000_BPEXT_SOLDTO"/>
+      <viewAttribute id="VBAK_AUDAT"/>
+      <viewAttribute id="BUT000_BPEXT_SHIPTO"/>
+      <viewAttribute id="LIPS_LFIMG" aggregationType="sum"/>
+      <viewAttribute id="Flag" aggregationType="sum"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="DATAFROM" datatype="NVARCHAR" length="13" expressionLanguage="SQL">
+        <formula>'SAP'</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="pSAPData">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_VBELN" source="VBEP_VBELN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_POSNR" source="VBEP_POSNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_EDATU" source="VBEP_EDATU"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_MATNR" source="VBAP_MATNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_KWMENG" source="VBAP_KWMENG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_LGORT" source="VBAP_LGORT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_AUGRU" source="VBAK_AUGRU"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_BNAME" source="VBAK_BNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBKD_BSTKD" source="VBKD_BSTKD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBKD_IHREZ" source="VBKD_IHREZ"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBKD_IHREZ_E" source="VBKD_IHREZ_E"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_KNUMV_ANA" source="VBAP_KNUMV_ANA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRCD_ELEMENTS_KBETR_Y002" source="PRCD_ELEMENTS_KBETR_Y002"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRCD_ELEMENTS_KBETR_ZPRS" source="PRCD_ELEMENTS_KBETR_ZPRS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUT000_BPEXT_SOLDTO" source="BUT000_BPEXT_SOLDTO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAK_AUDAT" source="VBAK_AUDAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUT000_BPEXT_SHIPTO" source="BUT000_BPEXT_SHIPTO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LIPS_LFIMG" source="LIPS_LFIMG"/>
+    </input>
+    <input node="Salesforce_Data">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Flag" source="Flag"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_VBELN" source="SALES_ORDER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_POSNR" source="ITEM_REFERENCE_NUMBER"/>
+    </input>
+    <filter>&quot;Flag&quot; is null</filter>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="VBEP_VBELN"/>
+    <joinAttribute name="VBEP_POSNR"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Only_In_Salesforce" joinType="leftOuter" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="SALES_ORDER"/>
+      <viewAttribute id="ITEM_REFERENCE_NUMBER"/>
+      <viewAttribute id="SOCREATION_DATE"/>
+      <viewAttribute id="SOLD_TO_PARTY"/>
+      <viewAttribute id="SHIP_TO_PARTY"/>
+      <viewAttribute id="PO_NUMBER"/>
+      <viewAttribute id="REQ_DELIVERY_DATE"/>
+      <viewAttribute id="ORDER_REASON"/>
+      <viewAttribute id="MATERIAL"/>
+      <viewAttribute id="ORDER_QUANTITY" aggregationType="sum"/>
+      <viewAttribute id="STORAGE_LOCATION"/>
+      <viewAttribute id="CONDION_PRICE" aggregationType="sum"/>
+      <viewAttribute id="UNIT_COST" aggregationType="sum"/>
+      <viewAttribute id="VENDOR_NUMBER"/>
+      <viewAttribute id="Flag" aggregationType="sum"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="DATAFROM" datatype="NVARCHAR" length="13" expressionLanguage="SQL">
+        <formula>'SF'</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input emptyUnionBehavior="undefined" node="Salesforce_Data">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORDER" source="SALES_ORDER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM_REFERENCE_NUMBER" source="ITEM_REFERENCE_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOCREATION_DATE" source="SOCREATION_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOLD_TO_PARTY" source="SOLD_TO_PARTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHIP_TO_PARTY" source="SHIP_TO_PARTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PO_NUMBER" source="PO_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REQ_DELIVERY_DATE" source="REQ_DELIVERY_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_REASON" source="ORDER_REASON"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_QUANTITY" source="ORDER_QUANTITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STORAGE_LOCATION" source="STORAGE_LOCATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONDION_PRICE" source="CONDION_PRICE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_COST" source="UNIT_COST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VENDOR_NUMBER" source="VENDOR_NUMBER"/>
+    </input>
+    <input emptyUnionBehavior="undefined" node="pSAPData">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Flag" source="Flag"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORDER" source="VBEP_VBELN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM_REFERENCE_NUMBER" source="VBEP_POSNR"/>
+    </input>
+    <filter>&quot;Flag&quot; is null</filter>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="SALES_ORDER"/>
+    <joinAttribute name="ITEM_REFERENCE_NUMBER"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+    <viewAttributes>
+      <viewAttribute id="VBEP_VBELN"/>
+      <viewAttribute id="DATAFROM"/>
+      <viewAttribute datatype="INTEGER" id="DUMMY"/>
+    
+      <viewAttribute id="VBEP_POSNR"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Only_In_SAP" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_VBELN" source="VBEP_VBELN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATAFROM" source="DATAFROM"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DUMMY" null="false" value="0"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_POSNR" source="VBEP_POSNR"/>
+    </input>
+    <input node="Only_In_Salesforce" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_VBELN" source="SALES_ORDER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATAFROM" source="DATAFROM"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DUMMY" null="false" value="1"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_POSNR" source="ITEM_REFERENCE_NUMBER"/>
+    </input>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Union_1">
+  <attributes>
+    <attribute id="VBEP_VBELN" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VBEP_VBELN"/>
+      <keyMapping columnObjectName="Union_1" columnName="VBEP_VBELN"/>
+    </attribute>
+    <attribute id="DATAFROM" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATAFROM"/>
+      <keyMapping columnObjectName="Union_1" columnName="DATAFROM"/>
+    </attribute>
+  
+    <attribute id="VBEP_POSNR" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VBEP_POSNR"/>
+      <keyMapping columnObjectName="Union_1" columnName="VBEP_POSNR"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="DUMMY" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="DUMMY"/>
+      <measureMapping columnObjectName="Union_1" columnName="DUMMY"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="371" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="pSAPData" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="536"/>
+      <rectangleSize height="30" width="244"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Salesforce_Data" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="386" y="536"/>
+      <rectangleSize height="30" width="230"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Only_In_SAP" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="414" y="356"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="pSAPData" modelObjectNameSpace="Only_In_SAP" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="260"/>
+    </shape>
+    <shape modelObjectName="Salesforce_Data" modelObjectNameSpace="Only_In_SAP" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="240"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Only_In_Salesforce" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="356"/>
+      <rectangleSize width="243"/>
+    </shape>
+    <shape modelObjectName="Salesforce_Data" modelObjectNameSpace="Only_In_Salesforce" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="pSAPData" modelObjectNameSpace="Only_In_Salesforce" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="371" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
