@@ -19,7 +19,7 @@ resources:
   - name: hdi_db
     parameters:
       config:
-        schema: TEST2
+        schema: SalesForce_Schema
     properties:
       hdi-container-name: '${service-name}'
     type: com.sap.xs.hdi-container
