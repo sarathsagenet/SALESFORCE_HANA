@@ -52,5 +52,11 @@
       "object": "LIPS",
       "schema": "SAPABAP1"
     }
+  },
+  "SALESFORCE_HANA.db::ZTSF_SERVCALLREP": {
+    "target": {
+      "object": "ZTSF_SERVCALLREP",
+      "schema": "SAPABAP1"
+    }
   }
-} 
+}
