@@ -58,5 +58,17 @@
       "object": "ZTSF_SERVCALLREP",
       "schema": "SAPABAP1"
     }
+  },
+  "SALESFORCE_HANA.db::T001L": {
+    "target": {
+      "object": "T001L",
+      "schema": "SAPABAP1"
+    }
+  },
+  "SALESFORCE_HANA.db::MARA": {
+    "target": {
+      "object": "MARA",
+      "schema": "SAPABAP1"
+    }
   }
 }

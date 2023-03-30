@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SALESFORCE_HANA.db.Calculation Views::Salesforce_Table_Logic" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="Additional logic done on Salesforce data"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="SALESFORCE_HANA.db::ZTSF_SERVCALLREP">
+    <resourceUri>SALESFORCE_HANA.db::ZTSF_SERVCALLREP</resourceUri>
+  </DataSource>
+  <DataSource id="SALESFORCE_HANA.db::T001L">
+    <resourceUri>SALESFORCE_HANA.db::T001L</resourceUri>
+  </DataSource>
+  <DataSource id="SALESFORCE_HANA.db::MARA">
+    <resourceUri>SALESFORCE_HANA.db::MARA</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="pZTSF_SERVCALLREP_SF_Table">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="SALES_ORDER"/>
+      <viewAttribute id="ITEM_REFERENCE_NUMBER"/>
+      <viewAttribute id="SOCREATION_DATE"/>
+      <viewAttribute id="SOLD_TO_PARTY"/>
+      <viewAttribute id="SHIP_TO_PARTY"/>
+      <viewAttribute id="PO_NUMBER"/>
+      <viewAttribute id="REQ_DELIVERY_DATE"/>
+      <viewAttribute id="ORDER_REASON"/>
+      <viewAttribute id="MATERIAL"/>
+      <viewAttribute id="ORDER_QUANTITY"/>
+      <viewAttribute id="STORAGE_LOCATION"/>
+      <viewAttribute id="CONDION_PRICE"/>
+      <viewAttribute id="UNIT_COST"/>
+      <viewAttribute id="CURRENCY"/>
+      <viewAttribute id="VENDOR_NUMBER"/>
+      <viewAttribute id="RECORD_CREAT_DT"/>
+      <viewAttribute id="RECORD_CREAT_TIM"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="Flag" datatype="INTEGER" expressionLanguage="SQL">
+        <formula>1</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="SALESFORCE_HANA.db::ZTSF_SERVCALLREP"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="jGet_StorageLoc_SAP" cardinality="CN_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="SALES_ORDER"/>
+      <viewAttribute id="ITEM_REFERENCE_NUMBER"/>
+      <viewAttribute id="SOCREATION_DATE"/>
+      <viewAttribute id="SOLD_TO_PARTY"/>
+      <viewAttribute id="SHIP_TO_PARTY"/>
+      <viewAttribute id="PO_NUMBER"/>
+      <viewAttribute id="REQ_DELIVERY_DATE"/>
+      <viewAttribute id="ORDER_REASON"/>
+      <viewAttribute id="MATERIAL"/>
+      <viewAttribute id="ORDER_QUANTITY" aggregationType="sum"/>
+      <viewAttribute id="STORAGE_LOCATION"/>
+      <viewAttribute id="CONDION_PRICE" aggregationType="sum"/>
+      <viewAttribute id="UNIT_COST" aggregationType="sum"/>
+      <viewAttribute id="CURRENCY"/>
+      <viewAttribute id="VENDOR_NUMBER"/>
+      <viewAttribute id="RECORD_CREAT_DT"/>
+      <viewAttribute id="RECORD_CREAT_TIM"/>
+      <viewAttribute id="Flag" aggregationType="sum"/>
+      <viewAttribute id="T001L_LGORT"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="pZTSF_SERVCALLREP_SF_Table">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORDER" source="SALES_ORDER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM_REFERENCE_NUMBER" source="ITEM_REFERENCE_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOCREATION_DATE" source="SOCREATION_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOLD_TO_PARTY" source="SOLD_TO_PARTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHIP_TO_PARTY" source="SHIP_TO_PARTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PO_NUMBER" source="PO_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REQ_DELIVERY_DATE" source="REQ_DELIVERY_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_REASON" source="ORDER_REASON"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_QUANTITY" source="ORDER_QUANTITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STORAGE_LOCATION" source="STORAGE_LOCATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONDION_PRICE" source="CONDION_PRICE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_COST" source="UNIT_COST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY" source="CURRENCY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VENDOR_NUMBER" source="VENDOR_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RECORD_CREAT_DT" source="RECORD_CREAT_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RECORD_CREAT_TIM" source="RECORD_CREAT_TIM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Flag" source="Flag"/>
+    </input>
+    <input node="pT001L">
+      <mapping xsi:type="Calculation:AttributeMapping" target="T001L_LGORT" source="T001L_LGORT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STORAGE_LOCATION" source="T001L_LGOBE"/>
+    </input>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="STORAGE_LOCATION"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="pT001L" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="WERKS"/>
+      <viewAttribute id="T001L_LGORT"/>
+      <viewAttribute id="T001L_LGOBE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="SALESFORCE_HANA.db::T001L">
+      <mapping xsi:type="Calculation:AttributeMapping" target="T001L_LGORT" source="LGORT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="T001L_LGOBE" source="LGOBE"/>
+    </input>
+    <filter>&quot;WERKS&quot; = '0090'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="jGet_MaterialNo_SAP" cardinality="CN_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="SALES_ORDER"/>
+      <viewAttribute id="ITEM_REFERENCE_NUMBER"/>
+      <viewAttribute id="SOCREATION_DATE"/>
+      <viewAttribute id="SOLD_TO_PARTY"/>
+      <viewAttribute id="SHIP_TO_PARTY"/>
+      <viewAttribute id="PO_NUMBER"/>
+      <viewAttribute id="REQ_DELIVERY_DATE"/>
+      <viewAttribute id="ORDER_REASON"/>
+      <viewAttribute id="MATERIAL"/>
+      <viewAttribute id="ORDER_QUANTITY" aggregationType="sum"/>
+      <viewAttribute id="STORAGE_LOCATION"/>
+      <viewAttribute id="CONDION_PRICE" aggregationType="sum"/>
+      <viewAttribute id="UNIT_COST" aggregationType="sum"/>
+      <viewAttribute id="CURRENCY"/>
+      <viewAttribute id="VENDOR_NUMBER"/>
+      <viewAttribute id="RECORD_CREAT_DT"/>
+      <viewAttribute id="RECORD_CREAT_TIM"/>
+      <viewAttribute id="Flag" aggregationType="sum"/>
+      <viewAttribute id="T001L_LGORT"/>
+      <viewAttribute id="MARA_MATNR"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="jGet_StorageLoc_SAP">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORDER" source="SALES_ORDER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM_REFERENCE_NUMBER" source="ITEM_REFERENCE_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOCREATION_DATE" source="SOCREATION_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOLD_TO_PARTY" source="SOLD_TO_PARTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHIP_TO_PARTY" source="SHIP_TO_PARTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PO_NUMBER" source="PO_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REQ_DELIVERY_DATE" source="REQ_DELIVERY_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_REASON" source="ORDER_REASON"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_QUANTITY" source="ORDER_QUANTITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STORAGE_LOCATION" source="STORAGE_LOCATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONDION_PRICE" source="CONDION_PRICE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_COST" source="UNIT_COST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY" source="CURRENCY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VENDOR_NUMBER" source="VENDOR_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RECORD_CREAT_DT" source="RECORD_CREAT_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RECORD_CREAT_TIM" source="RECORD_CREAT_TIM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Flag" source="Flag"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="T001L_LGORT" source="T001L_LGORT"/>
+    </input>
+    <input node="pMARA">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MARA_MATNR" source="MARA_MATNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MFRPN"/>
+    </input>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="MATERIAL"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="pMARA">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="MARA_MATNR"/>
+      <viewAttribute id="MFRPN"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="SALESFORCE_HANA.db::MARA">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MARA_MATNR" source="MATNR"/>
+    </input>
+  </calculationView>
+</calculationViews>
+<logicalModel id="jGet_MaterialNo_SAP">
+  <attributes>
+    <attribute id="MANDT" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MANDT"/>
+      <keyMapping columnObjectName="jGet_MaterialNo_SAP" columnName="MANDT"/>
+    </attribute>
+    <attribute id="SALES_ORDER" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SALES_ORDER"/>
+      <keyMapping columnObjectName="jGet_MaterialNo_SAP" columnName="SALES_ORDER"/>
+    </attribute>
+    <attribute id="ITEM_REFERENCE_NUMBER" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ITEM_REFERENCE_NUMBER"/>
+      <keyMapping columnObjectName="jGet_MaterialNo_SAP" columnName="ITEM_REFERENCE_NUMBER"/>
+    </attribute>
+    <attribute id="SOCREATION_DATE" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SOCREATION_DATE"/>
+      <keyMapping columnObjectName="jGet_MaterialNo_SAP" columnName="SOCREATION_DATE"/>
+    </attribute>
+    <attribute id="SOLD_TO_PARTY" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SOLD_TO_PARTY"/>
+      <keyMapping columnObjectName="jGet_MaterialNo_SAP" columnName="SOLD_TO_PARTY"/>
+    </attribute>
+    <attribute id="SHIP_TO_PARTY" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SHIP_TO_PARTY"/>
+      <keyMapping columnObjectName="jGet_MaterialNo_SAP" columnName="SHIP_TO_PARTY"/>
+    </attribute>
+    <attribute id="PO_NUMBER" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PO_NUMBER"/>
+      <keyMapping columnObjectName="jGet_MaterialNo_SAP" columnName="PO_NUMBER"/>
+    </attribute>
+    <attribute id="REQ_DELIVERY_DATE" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REQ_DELIVERY_DATE"/>
+      <keyMapping columnObjectName="jGet_MaterialNo_SAP" columnName="REQ_DELIVERY_DATE"/>
+    </attribute>
+    <attribute id="ORDER_REASON" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORDER_REASON"/>
+      <keyMapping columnObjectName="jGet_MaterialNo_SAP" columnName="ORDER_REASON"/>
+    </attribute>
+    <attribute id="MATERIAL" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MATERIAL"/>
+      <keyMapping columnObjectName="jGet_MaterialNo_SAP" columnName="MATERIAL"/>
+    </attribute>
+    <attribute id="STORAGE_LOCATION" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STORAGE_LOCATION"/>
+      <keyMapping columnObjectName="jGet_MaterialNo_SAP" columnName="STORAGE_LOCATION"/>
+    </attribute>
+    <attribute id="CURRENCY" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CURRENCY"/>
+      <keyMapping columnObjectName="jGet_MaterialNo_SAP" columnName="CURRENCY"/>
+    </attribute>
+    <attribute id="VENDOR_NUMBER" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VENDOR_NUMBER"/>
+      <keyMapping columnObjectName="jGet_MaterialNo_SAP" columnName="VENDOR_NUMBER"/>
+    </attribute>
+    <attribute id="RECORD_CREAT_DT" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RECORD_CREAT_DT"/>
+      <keyMapping columnObjectName="jGet_MaterialNo_SAP" columnName="RECORD_CREAT_DT"/>
+    </attribute>
+    <attribute id="RECORD_CREAT_TIM" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RECORD_CREAT_TIM"/>
+      <keyMapping columnObjectName="jGet_MaterialNo_SAP" columnName="RECORD_CREAT_TIM"/>
+    </attribute>
+    <attribute id="Flag" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Flag"/>
+      <keyMapping columnObjectName="jGet_MaterialNo_SAP" columnName="Flag"/>
+    </attribute>
+    <attribute id="T001L_LGORT" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LGORT"/>
+      <keyMapping columnObjectName="jGet_MaterialNo_SAP" columnName="T001L_LGORT"/>
+    </attribute>
+    <attribute id="MARA_MATNR" order="21" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MATNR"/>
+      <keyMapping columnObjectName="jGet_MaterialNo_SAP" columnName="MARA_MATNR"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="ORDER_QUANTITY" order="11" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="ORDER_QUANTITY"/>
+      <measureMapping columnObjectName="jGet_MaterialNo_SAP" columnName="ORDER_QUANTITY"/>
+    </measure>
+    <measure id="CONDION_PRICE" order="13" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="CONDION_PRICE"/>
+      <measureMapping columnObjectName="jGet_MaterialNo_SAP" columnName="CONDION_PRICE"/>
+    </measure>
+    <measure id="UNIT_COST" order="14" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="UNIT_COST"/>
+      <measureMapping columnObjectName="jGet_MaterialNo_SAP" columnName="UNIT_COST"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="720" y="191.9999988079071"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="pZTSF_SERVCALLREP_SF_Table" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="91.99999999999994" y="191.9999988079071"/>
+      <rectangleSize height="30" width="287"/>
+    </shape>
+    <shape expanded="true" modelObjectName="jGet_StorageLoc_SAP" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="639.1666666666666" y="508"/>
+      <rectangleSize height="30" width="239"/>
+    </shape>
+    <shape modelObjectName="pZTSF_SERVCALLREP_SF_Table" modelObjectNameSpace="jGet_StorageLoc_SAP" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="256.2578125"/>
+    </shape>
+    <shape modelObjectName="pT001L" modelObjectNameSpace="jGet_StorageLoc_SAP" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="161.21142578125"/>
+    </shape>
+    <shape expanded="true" modelObjectName="pT001L" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="429" y="191.9999988079071"/>
+      <rectangleSize height="30" width="241"/>
+    </shape>
+    <shape expanded="true" modelObjectName="jGet_MaterialNo_SAP" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="688" y="347"/>
+      <rectangleSize height="30" width="252"/>
+    </shape>
+    <shape modelObjectName="jGet_StorageLoc_SAP" modelObjectNameSpace="jGet_MaterialNo_SAP" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="240.021484375"/>
+    </shape>
+    <shape modelObjectName="pMARA" modelObjectNameSpace="jGet_MaterialNo_SAP" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="125.10693359375"/>
+    </shape>
+    <shape expanded="true" modelObjectName="pMARA" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="1051" y="502"/>
+      <rectangleSize height="30" width="244"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
