@@ -147,6 +147,9 @@
       <viewAttribute id="UNIT_COST" aggregationType="sum"/>
       <viewAttribute id="VENDOR_NUMBER"/>
       <viewAttribute id="Flag" aggregationType="sum"/>
+    
+      <viewAttribute hidden="true" id="JOIN$T001L_LGORT$VBAP_LGORT"/>
+      <viewAttribute hidden="true" id="JOIN$MARA_MATNR$VBAP_MATNR"/>
     </viewAttributes>
     <calculatedViewAttributes>
       <calculatedViewAttribute id="DATAFROM" datatype="NVARCHAR" length="13" expressionLanguage="SQL">
@@ -169,17 +172,34 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="CONDION_PRICE" source="CONDION_PRICE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_COST" source="UNIT_COST"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="VENDOR_NUMBER" source="VENDOR_NUMBER"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$T001L_LGORT$VBAP_LGORT" source="T001L_LGORT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MARA_MATNR$VBAP_MATNR" source="MARA_MATNR"/>
     </input>
     <input emptyUnionBehavior="undefined" node="pSAPData">
       <mapping xsi:type="Calculation:AttributeMapping" target="Flag" source="Flag"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORDER" source="VBEP_VBELN"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM_REFERENCE_NUMBER" source="VBEP_POSNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORDER" source="VBAK_BNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM_REFERENCE_NUMBER" source="VBKD_IHREZ"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$T001L_LGORT$VBAP_LGORT" source="VBAP_LGORT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MARA_MATNR$VBAP_MATNR" source="VBAP_MATNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOCREATION_DATE" source="VBAK_AUDAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOLD_TO_PARTY" source="BUT000_BPEXT_SOLDTO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHIP_TO_PARTY" source="BUT000_BPEXT_SHIPTO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PO_NUMBER" source="VBKD_BSTKD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REQ_DELIVERY_DATE" source="VBEP_EDATU"/>
     </input>
     <filter>&quot;Flag&quot; is null</filter>
     <joinAttribute name="MANDT"/>
     <joinAttribute name="SALES_ORDER"/>
     <joinAttribute name="ITEM_REFERENCE_NUMBER"/>
+    <joinAttribute name="JOIN$T001L_LGORT$VBAP_LGORT"/>
+    <joinAttribute name="JOIN$MARA_MATNR$VBAP_MATNR"/>
+    <joinAttribute name="SOCREATION_DATE"/>
+    <joinAttribute name="SOLD_TO_PARTY"/>
+    <joinAttribute name="SHIP_TO_PARTY"/>
+    <joinAttribute name="PO_NUMBER"/>
+    <joinAttribute name="REQ_DELIVERY_DATE"/>
   </calculationView>
   <calculationView xsi:type="Calculation:UnionView" id="Union_1">
     <viewAttributes>
