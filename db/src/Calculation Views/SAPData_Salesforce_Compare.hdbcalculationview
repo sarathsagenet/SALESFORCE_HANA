@@ -7,8 +7,8 @@
   <DataSource id="SALESFORCE_HANA.db.Calculation Views::SAPData_Salesforce">
     <resourceUri>SALESFORCE_HANA.db.Calculation Views::SAPData_Salesforce</resourceUri>
   </DataSource>
-  <DataSource id="SALESFORCE_HANA.db::ZTSF_SERVCALLREP">
-    <resourceUri>SALESFORCE_HANA.db::ZTSF_SERVCALLREP</resourceUri>
+  <DataSource id="SALESFORCE_HANA.db.Calculation Views::Salesforce_Table_Logic">
+    <resourceUri>SALESFORCE_HANA.db.Calculation Views::Salesforce_Table_Logic</resourceUri>
   </DataSource>
 </dataSources>
 <calculationViews>
@@ -58,13 +58,16 @@
       <viewAttribute id="CONDION_PRICE"/>
       <viewAttribute id="UNIT_COST"/>
       <viewAttribute id="VENDOR_NUMBER"/>
+    
+      <viewAttribute id="T001L_LGORT"/>
+      <viewAttribute id="MARA_MATNR"/>
     </viewAttributes>
     <calculatedViewAttributes>
       <calculatedViewAttribute id="Flag" datatype="INTEGER" expressionLanguage="SQL">
         <formula>1</formula>
       </calculatedViewAttribute>
     </calculatedViewAttributes>
-    <input node="SALESFORCE_HANA.db::ZTSF_SERVCALLREP"/>
+    <input node="SALESFORCE_HANA.db.Calculation Views::Salesforce_Table_Logic"/>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Only_In_SAP" joinType="leftOuter" filterExpressionLanguage="SQL">
     <viewAttributes>
@@ -216,7 +219,9 @@
   
     <attribute id="VBEP_POSNR" order="4" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="VBEP_POSNR"/>
+  
       <keyMapping columnObjectName="Union_1" columnName="VBEP_POSNR"/>
+  
     </attribute>
   </attributes>
   <calculatedAttributes/>

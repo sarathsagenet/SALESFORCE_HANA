@@ -98,11 +98,11 @@
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="pT001L" filterExpressionLanguage="SQL">
     <viewAttributes>
-      <viewAttribute id="MANDT"/>
-      <viewAttribute id="WERKS"/>
       <viewAttribute id="T001L_LGORT"/>
+      <viewAttribute id="MANDT"/>
       <viewAttribute id="T001L_LGOBE"/>
-    </viewAttributes>
+    
+      <viewAttribute id="WERKS"/></viewAttributes>
     <calculatedViewAttributes/>
     <input node="SALESFORCE_HANA.db::T001L">
       <mapping xsi:type="Calculation:AttributeMapping" target="T001L_LGORT" source="LGORT"/>
@@ -167,8 +167,8 @@
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="pMARA">
     <viewAttributes>
-      <viewAttribute id="MANDT"/>
       <viewAttribute id="MARA_MATNR"/>
+      <viewAttribute id="MANDT"/>
       <viewAttribute id="MFRPN"/>
     </viewAttributes>
     <calculatedViewAttributes/>
@@ -274,45 +274,45 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="720" y="191.9999988079071"/>
+      <upperLeftCorner x="516.2887785388483" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="pZTSF_SERVCALLREP_SF_Table" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="91.99999999999994" y="191.9999988079071"/>
+      <upperLeftCorner x="92" y="536.9999976158142"/>
       <rectangleSize height="30" width="287"/>
     </shape>
     <shape expanded="true" modelObjectName="jGet_StorageLoc_SAP" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="639.1666666666666" y="508"/>
+      <upperLeftCorner x="155.83333333333326" y="376.9999988079071"/>
       <rectangleSize height="30" width="239"/>
     </shape>
     <shape modelObjectName="pZTSF_SERVCALLREP_SF_Table" modelObjectNameSpace="jGet_StorageLoc_SAP" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="20" y="30"/>
-      <rectangleSize width="256.2578125"/>
+      <rectangleSize width="256"/>
     </shape>
     <shape modelObjectName="pT001L" modelObjectNameSpace="jGet_StorageLoc_SAP" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="320" y="30"/>
-      <rectangleSize width="161.21142578125"/>
+      <rectangleSize width="161"/>
     </shape>
     <shape expanded="true" modelObjectName="pT001L" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="429" y="191.9999988079071"/>
+      <upperLeftCorner x="428.99999999999994" y="536.9999976158142"/>
       <rectangleSize height="30" width="241"/>
     </shape>
     <shape expanded="true" modelObjectName="jGet_MaterialNo_SAP" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="688" y="347"/>
+      <upperLeftCorner x="470.2887785388483" y="217"/>
       <rectangleSize height="30" width="252"/>
     </shape>
     <shape modelObjectName="jGet_StorageLoc_SAP" modelObjectNameSpace="jGet_MaterialNo_SAP" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="20" y="30"/>
-      <rectangleSize width="240.021484375"/>
+      <rectangleSize width="240"/>
     </shape>
     <shape modelObjectName="pMARA" modelObjectNameSpace="jGet_MaterialNo_SAP" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="320" y="30"/>
-      <rectangleSize width="125.10693359375"/>
+      <rectangleSize width="125"/>
     </shape>
     <shape expanded="true" modelObjectName="pMARA" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="1051" y="502"/>
+      <upperLeftCorner x="550.713403742356" y="376.9999988079071"/>
       <rectangleSize height="30" width="244"/>
     </shape>
   </shapes>
