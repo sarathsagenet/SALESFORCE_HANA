@@ -252,7 +252,21 @@
       <keyMapping columnObjectName="jGet_MaterialNo_SAP" columnName="MARA_MATNR"/>
     </attribute>
   </attributes>
-  <calculatedAttributes/>
+  <calculatedAttributes>
+    <calculatedAttribute id="CC_ORDERREASON_SAP" order="22" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORDER REASON SAP FORMAT">
+        <comment text="Order Reason converted from SF format to SAP format"/>
+      </descriptions>
+      <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="20">
+        <formula>CASE UPPER(&quot;ORDER_REASON&quot;) 
+	 WHEN 'INSTALL' then 'C01'
+	 WHEN 'DISPATCH' then 'C02'
+	 WHEN 'PREPAY' then 'C03'
+	 ELSE '' 
+ END</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+  </calculatedAttributes>
   <baseMeasures>
     <measure id="ORDER_QUANTITY" order="11" aggregationType="sum" measureType="simple">
       <descriptions defaultDescription="ORDER_QUANTITY"/>
@@ -274,17 +288,17 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="516.2887785388483" y="112"/>
+      <upperLeftCorner x="516" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="pZTSF_SERVCALLREP_SF_Table" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="92" y="536.9999976158142"/>
+      <upperLeftCorner x="92" y="536"/>
       <rectangleSize height="30" width="287"/>
     </shape>
     <shape expanded="true" modelObjectName="jGet_StorageLoc_SAP" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="155.83333333333326" y="376.9999988079071"/>
+      <upperLeftCorner x="155" y="376"/>
       <rectangleSize height="30" width="239"/>
     </shape>
     <shape modelObjectName="pZTSF_SERVCALLREP_SF_Table" modelObjectNameSpace="jGet_StorageLoc_SAP" modelObjectType="JoinNodeInput">
@@ -296,11 +310,11 @@
       <rectangleSize width="161"/>
     </shape>
     <shape expanded="true" modelObjectName="pT001L" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="428.99999999999994" y="536.9999976158142"/>
+      <upperLeftCorner x="428" y="536"/>
       <rectangleSize height="30" width="241"/>
     </shape>
     <shape expanded="true" modelObjectName="jGet_MaterialNo_SAP" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="470.2887785388483" y="217"/>
+      <upperLeftCorner x="470" y="217"/>
       <rectangleSize height="30" width="252"/>
     </shape>
     <shape modelObjectName="jGet_StorageLoc_SAP" modelObjectNameSpace="jGet_MaterialNo_SAP" modelObjectType="JoinNodeInput">
@@ -312,7 +326,7 @@
       <rectangleSize width="125"/>
     </shape>
     <shape expanded="true" modelObjectName="pMARA" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="550.713403742356" y="376.9999988079071"/>
+      <upperLeftCorner x="550" y="376"/>
       <rectangleSize height="30" width="244"/>
     </shape>
   </shapes>
