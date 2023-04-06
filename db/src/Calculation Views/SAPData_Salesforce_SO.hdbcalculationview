@@ -44,8 +44,8 @@
   <calculationView xsi:type="Calculation:ProjectionView" id="pVBAP">
     <viewAttributes>
       <viewAttribute id="MANDT"/>
-      <viewAttribute id="VBELN"/>
-      <viewAttribute id="POSNR"/>
+      <viewAttribute id="VBAP_VBELN"/>
+      <viewAttribute id="VBAP_POSNR"/>
       <viewAttribute id="VBAP_MATNR"/>
       <viewAttribute id="VBAP_KWMENG"/>
       <viewAttribute id="VBAP_LGORT"/>
@@ -57,6 +57,9 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_KWMENG" source="KWMENG"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_LGORT" source="LGORT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_KNUMV_ANA" source="KNUMV_ANA"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_VBELN" source="VBELN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_POSNR" source="POSNR"/>
     </input>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="jVBEP_VBAP" cardinality="CN_1" joinType="leftOuter">
@@ -83,8 +86,8 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_LGORT" source="VBAP_LGORT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="VBAP_KNUMV_ANA" source="VBAP_KNUMV_ANA"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_VBELN" source="VBELN"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_POSNR" source="POSNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_VBELN" source="VBAP_VBELN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBEP_POSNR" source="VBAP_POSNR"/>
     </input>
     <joinAttribute name="MANDT"/>
     <joinAttribute name="VBEP_VBELN"/>
@@ -539,7 +542,9 @@
   
     <attribute id="VBAK_VDATU" order="19" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="VBAK_VDATU"/>
+  
       <keyMapping columnObjectName="j_with_LIPS" columnName="VBAK_VDATU"/>
+  
     </attribute>
   </attributes>
   <calculatedAttributes/>
