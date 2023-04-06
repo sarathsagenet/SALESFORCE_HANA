@@ -41,7 +41,9 @@
         <formula>1</formula>
       </calculatedViewAttribute>
     </calculatedViewAttributes>
-    <input node="SALESFORCE_HANA.db::ZTSF_SERVCALLREP"/>
+    <input node="SALESFORCE_HANA.db::ZTSF_SERVCALLREP">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONDION_PRICE" source="CONDITION_PRICE"/>
+    </input>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="jGet_StorageLoc_SAP" cardinality="CN_1" joinType="leftOuter">
     <viewAttributes>

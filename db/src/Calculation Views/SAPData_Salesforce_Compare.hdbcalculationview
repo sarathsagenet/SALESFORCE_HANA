@@ -61,6 +61,8 @@
     
       <viewAttribute id="T001L_LGORT"/>
       <viewAttribute id="MARA_MATNR"/>
+    
+      <viewAttribute id="CC_ORDERREASON_SAP"/>
     </viewAttributes>
     <calculatedViewAttributes>
       <calculatedViewAttribute id="Flag" datatype="INTEGER" expressionLanguage="SQL">
@@ -147,7 +149,6 @@
       <viewAttribute id="UNIT_COST" aggregationType="sum"/>
       <viewAttribute id="VENDOR_NUMBER"/>
       <viewAttribute id="Flag" aggregationType="sum"/>
-    
       <viewAttribute hidden="true" id="JOIN$T001L_LGORT$VBAP_LGORT"/>
       <viewAttribute hidden="true" id="JOIN$MARA_MATNR$VBAP_MATNR"/>
     </viewAttributes>
@@ -172,7 +173,6 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="CONDION_PRICE" source="CONDION_PRICE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_COST" source="UNIT_COST"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="VENDOR_NUMBER" source="VENDOR_NUMBER"/>
-    
       <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$T001L_LGORT$VBAP_LGORT" source="T001L_LGORT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MARA_MATNR$VBAP_MATNR" source="MARA_MATNR"/>
     </input>
